@@ -36,9 +36,20 @@ namespace konyvtar
                 }
             }
         }
-        static void EditBookData()
+        static void EditBookData(List<Book> books, int bookIndex, string change, string input)
         {
-
+            switch(change)
+            {
+                case "title":
+                    books[bookIndex] = new Book(input, books[bookIndex].Author, books[bookIndex].PageCount, books[bookIndex].ReleaseYear); break;
+                case "author":
+                    books[bookIndex] = new Book(books[bookIndex].Title, input, books[bookIndex].PageCount, books[bookIndex].ReleaseYear); break;
+                case "pagecount":
+                    books[bookIndex] = new Book(books[bookIndex].Title, books[bookIndex].Author, Convert.ToInt32(input), books[bookIndex].ReleaseYear); break;
+                case "releaseyear":
+                    books[bookIndex] = new Book(books[bookIndex].Title, books[bookIndex].Author, books[bookIndex].PageCount, Convert.ToInt32(input)); break;
+                default: Console.WriteLine("Rossz input/typeerror vagy valami"); break;
+            }
         }
     }
 }
