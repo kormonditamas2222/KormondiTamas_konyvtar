@@ -26,17 +26,18 @@ namespace konyvtar
         public string Author { get => author; }
         public int PageCount { get => pageCount; }
         public int ReleaseYear { get => releaseYear; }
-        static void GetBookByTitle(List<Book> books, string title)
+        public string GetBookByTitle(List<Book> books, string title)
         {
             foreach (var item in books)
             {
                 if (item.Title == title)
                 {
-                    Console.WriteLine($"{item.Title} könyv, írta: {item.Author}, {item.PageCount} hosszú, kiadási éve: {item.ReleaseYear}");
+                    return item.ToString();
                 }
             }
+            return "Nincs egyezés";
         }
-        static void EditBookData(List<Book> books, int bookIndex, string change, string input)
+        public void EditBookData(List<Book> books, int bookIndex, string change, string input)
         {
             switch(change)
             {
@@ -50,6 +51,11 @@ namespace konyvtar
                     books[bookIndex] = new Book(books[bookIndex].Title, books[bookIndex].Author, books[bookIndex].PageCount, Convert.ToInt32(input)); break;
                 default: Console.WriteLine("Rossz input/typeerror vagy valami"); break;
             }
+        }
+
+        public override string? ToString()
+        {
+            return $"{this.Title} könyv, írta: {this.Author}, {this.PageCount} hosszú, kiadási éve: {this.ReleaseYear}";
         }
     }
 }
