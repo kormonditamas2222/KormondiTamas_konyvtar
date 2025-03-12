@@ -14,10 +14,10 @@
             Console.WriteLine(book1.GetBookByTitle(books, "Egri csillagok"));
             Console.WriteLine(book1.GetBookByTitle(books, "Gulliver utazásai"));
             foreach (Book book in books) { Console.WriteLine(book); }
-            InputStuff(books);
+            InputStuff();
             foreach (Book book in books) { Console.WriteLine(book); }
         }
-        static void InputStuff(List<Book> books)
+        static void InputStuff()
         {
             int whichBook = -1;
             string choice = string.Empty;
